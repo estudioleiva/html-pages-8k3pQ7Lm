@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bymovi - Planteo Inicial</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f3f6fa;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1f2933;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      overflow: hidden;
+      border: 1px solid #e5eaf0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0f4c81, #1d7fbf);
+      color: #ffffff;
+      padding: 34px 40px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .header p {
+      margin: 10px 0 0;
+      font-size: 16px;
+      opacity: 0.92;
+    }
+
+    .content {
+      padding: 38px 40px;
+    }
+
+    .label {
+      display: inline-block;
+      background: #e8f3fb;
+      color: #0f4c81;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin: 8px 0 18px;
+      color: #12263a;
+    }
+
+    .text {
+      font-size: 18px;
+      line-height: 1.65;
+      margin-bottom: 24px;
+      color: #263442;
+    }
+
+    .highlight-box {
+      background: #f8fafc;
+      border-left: 5px solid #1d7fbf;
+      padding: 24px 26px;
+      border-radius: 12px;
+      margin: 30px 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .item {
+      background: #f9fbfd;
+      border: 1px solid #e4ebf2;
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .item h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: #0f4c81;
+    }
+
+    .item p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #4b5b6b;
+    }
+
+    .footer {
+      padding: 24px 40px 34px;
+      border-top: 1px solid #edf1f5;
+      background: #fbfcfe;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 15px;
+      color: #5f6f7f;
+      line-height: 1.6;
+    }
+
+    strong {
+      color: #12263a;
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        margin: 20px auto;
+        padding: 14px;
+      }
+
+      .header, .content, .footer {
+        padding: 26px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .text, .highlight-box p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+
+      <div class="header">
+        <h1>Planteo inicial sobre escalabilidad organizacional</h1>
+        <p>Bymovi · Reunión exploratoria con José Blunda</p>
+      </div>
+
+      <div class="content">
+        <span class="label">Contexto general</span>
+
+        <h2 class="section-title">Quiénes somos</h2>
+
+        <p class="text">
+          <strong>Bymovi</strong> es una sociedad anónima dedicada al desarrollo de software,
+          principalmente orientado a soluciones para obras sociales, prepagas y prestadores de salud.
+          La empresa está compuesta por cuatro socios principales: <strong>Alejandro, Carlos, Marcos y Rodrigo</strong>.
+        </p>
+
+        <p class="text">
+          Dentro de esa estructura, <strong>Marcos y Rodrigo son los socios con mayor participación operativa diaria</strong>:
+          Marcos cumple el rol de gerente general y Rodrigo el de gerente de desarrollo. Ambos concentran buena parte
+          de la gestión cotidiana, la coordinación de proyectos y la resolución de temas críticos.
+        </p>
+
+        <div class="highlight-box">
+          <p>
+            La inquietud que queremos compartir es cómo fortalecer la organización para que esta nueva etapa
+            de crecimiento pueda sostenerse sin depender tanto del esfuerzo individual de algunas personas clave.
+          </p>
+        </div>
+
+        <h2 class="section-title">La situación que nos preocupa</h2>
+
+        <p class="text">
+          Bymovi está atravesando una segunda etapa de crecimiento en cantidad de clientes, proyectos y oportunidades.
+          Este desafío no es nuevo para nosotros: en el pasado ya tuvimos una expansión comercial que no logramos
+          acompañar adecuadamente desde lo organizativo y operativo, y eso nos jugó una mala pasada, afectando la
+          calidad del servicio y contribuyendo incluso a la pérdida de algunos clientes.
+        </p>
+
+        <p class="text">
+          Hoy queremos aprovechar esta nueva oportunidad de crecimiento, pero sobre todo
+          <strong>fortalecer las bases de la organización</strong>. En particular, vemos necesario trabajar sobre
+          el desarrollo de mandos medios, la distribución de responsabilidades y la construcción de un sistema de
+          liderazgo más escalable. En el área de desarrollo, históricamente hubo una fuerte centralización en la
+          figura de Rodrigo, sostenida con mucho compromiso y esfuerzo personal, pero difícil de sostener como modelo
+          organizacional a largo plazo.
+        </p>
+
+        <p class="text">
+          Nuestra intención no es llevar una conclusión cerrada, sino compartir esta inquietud, contar cómo vemos
+          la situación desde adentro y escuchar cómo la interpreta José a partir de su experiencia. A partir de esta
+          primera conversación, nos interesa evaluar en qué podría ayudarnos y qué camino tendría sentido recorrer,
+          ya sea en esta instancia o en entrevistas posteriores.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <h3>1. Crecimiento sostenible</h3>
+            <p>Evitar que el crecimiento comercial vuelva a superar la capacidad organizativa y operativa.</p>
+          </div>
+
+          <div class="item">
+            <h3>2. Mandos medios</h3>
+            <p>Formar referentes que puedan absorber gestión, seguimiento y ejecución diaria.</p>
+          </div>
+
+          <div class="item">
+            <h3>3. Liderazgo escalable</h3>
+            <p>Permitir que los socios operativos evolucionen hacia roles más estratégicos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>
+          Este documento busca ordenar el punto de partida de la conversación, sin reemplazar el análisis externo
+          ni condicionar de antemano el diagnóstico.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
