@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estudio Leiva | Centro de Documentación</title>
+
+<style>
+:root{
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --primary:#0f172a;
+    --secondary:#2563eb;
+    --border:#e5e7eb;
+    --text:#1f2937;
+    --muted:#64748b;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+header{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    padding:40px;
+}
+
+header h1{
+    margin:0;
+    font-size:38px;
+}
+
+header p{
+    margin-top:10px;
+    color:#cbd5e1;
+    font-size:16px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+    box-shadow:0 6px 20px rgba(0,0,0,.05);
+}
+
+.card h2{
+    margin-top:0;
+    color:var(--secondary);
+}
+
+.card ul{
+    padding-left:20px;
+}
+
+.card li{
+    margin-bottom:10px;
+}
+
+.card a{
+    text-decoration:none;
+    color:#2563eb;
+    font-weight:bold;
+}
+
+.card a:hover{
+    text-decoration:underline;
+}
+
+.badge{
+    display:inline-block;
+    background:#dbeafe;
+    color:#1e40af;
+    font-size:12px;
+    font-weight:bold;
+    padding:5px 10px;
+    border-radius:999px;
+    margin-bottom:10px;
+}
+
+footer{
+    text-align:center;
+    color:var(--muted);
+    padding:40px;
+    font-size:13px;
+}
+
+.update{
+    background:#ecfeff;
+    border:1px solid #bae6fd;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>Estudio Leiva</h1>
+    <p>Centro de documentación ejecutiva, estratégica y de proyectos</p>
+</header>
+
+<div class="container">
+
+```
+<div class="update">
+    <strong>Última actualización:</strong> Junio 2026
+</div>
+
+<div class="grid">
+
+    <div class="card">
+        <div class="badge">INTELIGENCIA ARTIFICIAL</div>
+        <h2>ByMovi IA</h2>
+        <ul>
+            <li><a href="agenda-ia-bymovi.html">Agenda Ejecutiva IA</a></li>
+            <li><a href="control-costos-ia.html">Control de Costos IA</a></li>
+            <li><a href="#">Roadmap IA</a></li>
+            <li><a href="#">Monetización IA</a></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="badge">CLIENTES</div>
+        <h2>Proyectos y Seguimiento</h2>
+        <ul>
+            <li><a href="#">Boreal</a></li>
+            <li><a href="#">IPSST</a></li>
+            <li><a href="#">Prevención Salud</a></li>
+            <li><a href="#">OSPAAT</a></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="badge">GESTIÓN</div>
+        <h2>Empresa</h2>
+        <ul>
+            <li><a href="#">Rentabilidad ByMovi</a></li>
+            <li><a href="#">RRHH y Escalabilidad</a></li>
+            <li><a href="#">Consultora Blunda</a></li>
+            <li><a href="#">Indicadores Gerenciales</a></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="badge">ESTUDIO LEIVA</div>
+        <h2>SaaS y Productos</h2>
+        <ul>
+            <li><a href="#">CheckFlow</a></li>
+            <li><a href="#">Cotizaciones IA</a></li>
+            <li><a href="#">Guía de Construcción</a></li>
+            <li><a href="#">Microproductos</a></li>
+        </ul>
+    </div>
+
+</div>
+```
+
+</div>
+
+<footer>
+    Estudio Leiva · Centro de Documentación HTML · GitHub Pages
+</footer>
+
+</body>
+</html>
