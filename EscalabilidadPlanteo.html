@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bymovi - Planteo Inicial de Escalabilidad</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f3f6fa;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1f2933;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      border: 1px solid #e5eaf0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0f4c81, #1d7fbf);
+      color: #ffffff;
+      padding: 34px 40px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .header p {
+      margin: 10px 0 0;
+      font-size: 16px;
+      opacity: 0.92;
+    }
+
+    .content {
+      padding: 38px 40px;
+    }
+
+    .label {
+      display: inline-block;
+      background: #e8f3fb;
+      color: #0f4c81;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 22px;
+    }
+
+    .intro {
+      font-size: 19px;
+      line-height: 1.65;
+      margin-bottom: 28px;
+      color: #263442;
+    }
+
+    .highlight-box {
+      background: #f8fafc;
+      border-left: 5px solid #1d7fbf;
+      padding: 24px 26px;
+      border-radius: 12px;
+      margin: 30px 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .item {
+      background: #f9fbfd;
+      border: 1px solid #e4ebf2;
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .item h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: #0f4c81;
+    }
+
+    .item p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #4b5b6b;
+    }
+
+    .footer {
+      padding: 24px 40px 34px;
+      border-top: 1px solid #edf1f5;
+      background: #fbfcfe;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 15px;
+      color: #5f6f7f;
+      line-height: 1.6;
+    }
+
+    strong {
+      color: #12263a;
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        margin: 20px auto;
+        padding: 14px;
+      }
+
+      .header, .content, .footer {
+        padding: 26px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .intro, .highlight-box p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+
+      <div class="header">
+        <h1>Planteo inicial sobre escalabilidad organizacional</h1>
+        <p>Bymovi · Reunión exploratoria con consultor externo</p>
+      </div>
+
+      <div class="content">
+        <span class="label">Tema central</span>
+
+        <p class="intro">
+          <strong>Bymovi está atravesando una segunda etapa de crecimiento</strong> en cantidad de clientes,
+          proyectos y oportunidades. Este desafío no es nuevo para nosotros: en el pasado ya tuvimos una
+          expansión comercial que no logramos acompañar adecuadamente desde lo organizativo y operativo,
+          y eso nos jugó una mala pasada, afectando la calidad del servicio y contribuyendo incluso a la
+          pérdida de algunos clientes.
+        </p>
+
+        <div class="highlight-box">
+          <p>
+            Esta vez queremos aprovechar el crecimiento, pero sobre todo
+            <strong>fortalecer las bases de la organización</strong> para hacerlo sostenible en el tiempo.
+          </p>
+        </div>
+
+        <p class="intro">
+          En particular, vemos necesario trabajar sobre el
+          <strong>desarrollo de mandos medios</strong>, la distribución de responsabilidades y la construcción
+          de un sistema de liderazgo más escalable. El área de desarrollo históricamente estuvo marcada por
+          una fuerte centralización en la figura de Rodrigo, sostenida con mucho compromiso y esfuerzo personal,
+          pero difícil de sostener como modelo organizacional.
+        </p>
+
+        <p class="intro">
+          Hoy necesitamos formar y consolidar personas que puedan absorber buena parte de esa gestión y
+          ejecución diaria, permitiendo que Rodrigo escale hacia un rol más técnico-estratégico como socio,
+          y que la empresa pueda crecer sin depender tanto de esfuerzos individuales.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <h3>1. Escalabilidad</h3>
+            <p>Evitar que el crecimiento comercial supere nuevamente la capacidad operativa de la empresa.</p>
+          </div>
+
+          <div class="item">
+            <h3>2. Mandos medios</h3>
+            <p>Desarrollar referentes que absorban gestión, seguimiento y ejecución diaria.</p>
+          </div>
+
+          <div class="item">
+            <h3>3. Liderazgo sostenible</h3>
+            <p>Permitir que los socios y referentes clave evolucionen hacia roles más estratégicos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>
+          El objetivo de esta reunión no es presentar una solución cerrada, sino compartir el problema,
+          validar el diagnóstico y evaluar posibles líneas de trabajo para acompañar una nueva etapa de
+          crecimiento de manera más ordenada y sostenible.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
