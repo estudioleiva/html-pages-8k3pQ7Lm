@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ByMovi | Control de Costos e Inversión en IA</title>
+
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #64748b;
+      --primary: #2563eb;
+      --primary-dark: #1e3a8a;
+      --primary-soft: #dbeafe;
+      --green: #047857;
+      --green-soft: #d1fae5;
+      --orange: #c2410c;
+      --orange-soft: #ffedd5;
+      --red: #b91c1c;
+      --red-soft: #fee2e2;
+      --border: #e2e8f0;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 32%),
+        radial-gradient(circle at bottom right, #e0f2fe 0, transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 32px auto;
+      padding: 0 20px 40px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      border-radius: 22px;
+      padding: 30px 34px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      color: #dbeafe;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: .3px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      color: #cbd5e1;
+      font-size: 16px;
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+    }
+
+    .card.full {
+      grid-column: 1 / -1;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 21px;
+      color: var(--primary-dark);
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 16px;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    ul, ol {
+      margin: 10px 0 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    .callout {
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .callout.blue {
+      background: var(--primary-soft);
+      border-color: #bfdbfe;
+    }
+
+    .callout.green {
+      background: var(--green-soft);
+      border-color: #a7f3d0;
+    }
+
+    .callout.orange {
+      background: var(--orange-soft);
+      border-color: #fed7aa;
+    }
+
+    .callout.red {
+      background: var(--red-soft);
+      border-color: #fecaca;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .tag.blue {
+      background: #bfdbfe;
+      color: #1e40af;
+    }
+
+    .tag.green {
+      background: #a7f3d0;
+      color: #065f46;
+    }
+
+    .tag.orange {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+
+    .tag.red {
+      background: #fecaca;
+      color: #991b1b;
+    }
+
+    .question {
+      background: #0f172a;
+      color: white;
+      border-radius: 18px;
+      padding: 22px;
+      margin-top: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .question h2 {
+      color: white;
+    }
+
+    .question ol {
+      margin-top: 12px;
+    }
+
+    .question li {
+      color: #e2e8f0;
+      font-size: 16px;
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: var(--primary-dark);
+    }
+
+    @media (max-width: 760px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .hero {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <div class="eyebrow">ByMovi · Gestión ejecutiva IA</div>
+      <h1>Control de costos e inversión en Inteligencia Artificial</h1>
+      <p class="subtitle">
+        Tema transversal para revisar con Rodrigo y Juan: consumo, presupuesto, previsibilidad financiera y escalabilidad del uso de IA.
+      </p>
+    </header>
+
+    <section class="callout blue">
+      <span class="tag blue">Objetivo central</span>
+      <p>
+        No se trata de bajar costos ni de restringir el uso de IA. El objetivo es tener
+        <span class="highlight">previsibilidad financiera</span> sobre cómo evoluciona la inversión en herramientas como Claude Code, OpenAI, Gemini y otras.
+      </p>
+    </section>
+
+    <section class="grid">
+
+      <article class="card">
+        <h2>Origen del tema</h2>
+        <p>
+          Marcos vio un post en X/Twitter sobre ahorro de tokens, optimización de prompts y control de consumo de IA.
+        </p>
+        <p>
+          Ese post disparó la inquietud de si ByMovi está usando sus herramientas de IA de forma controlada o si el gasto puede crecer silenciosamente.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Acción ya tomada</h2>
+        <p>
+          Marcos le pidió a Juan que instale el tema en el grupo donde participan:
+        </p>
+        <ul>
+          <li>Marcos.</li>
+          <li>Juan.</li>
+          <li>Rodrigo.</li>
+        </ul>
+        <p>
+          La idea es que el tema no quede perdido entre otros pendientes.
+        </p>
+      </article>
+
+    </section>
+
+    <section class="card full">
+      <h2>Qué hay que revisar con Rodrigo</h2>
+
+      <h3>Herramientas utilizadas</h3>
+      <ul>
+        <li>Claude Code.</li>
+        <li>OpenAI.</li>
+        <li>Gemini.</li>
+        <li>Otras herramientas de IA que estén usando desarrollo, soporte o prototipos.</li>
+      </ul>
+
+      <h3>Consumo</h3>
+      <ul>
+        <li>Consumo actual.</li>
+        <li>Tendencia de crecimiento.</li>
+        <li>Qué equipos o personas consumen más.</li>
+      </ul>
+
+      <h3>Costos</h3>
+      <ul>
+        <li>Gasto mensual actual.</li>
+        <li>Gasto mensual proyectado.</li>
+        <li>Escenario si el uso se duplica o triplica.</li>
+      </ul>
+
+      <h3>Controles</h3>
+      <ul>
+        <li>Alertas de gasto.</li>
+        <li>Límites o topes.</li>
+        <li>Métricas disponibles.</li>
+        <li>Seguimiento mensual.</li>
+      </ul>
+    </section>
+
+    <section class="callout green">
+      <span class="tag green">Enfoque recomendado</span>
+      <p>
+        Ya no conviene hablar solamente de “tokens”. Conviene analizar el costo de IA como una nueva línea de inversión operativa.
+      </p>
+      <ul>
+        <li><strong>Costos IA por cliente:</strong> Boreal, IPSST, Prevención, etc.</li>
+        <li><strong>Costos IA por producto:</strong> Alto Costo, Liquidaciones, Autorizaciones.</li>
+        <li><strong>Costos IA internos:</strong> prototipos, investigación, pruebas y soporte técnico.</li>
+      </ul>
+    </section>
+
+    <section class="grid">
+
+      <article class="card">
+        <h2>Relación con rentabilidad</h2>
+        <p>
+          Este tema se conecta directamente con el análisis de rentabilidad de ByMovi.
+        </p>
+        <p>
+          Pregunta clave:
+          <strong>¿cuánto margen consumen realmente las herramientas de IA?</strong>
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Relación con monetización IA</h2>
+        <p>
+          También se vincula con cómo se cobrarán los productos de IA.
+        </p>
+        <p>
+          Pregunta clave:
+          <strong>¿estamos cobrando más de lo que cuesta operar estas soluciones?</strong>
+        </p>
+      </article>
+
+    </section>
+
+    <section class="callout orange">
+      <span class="tag orange">Relación con escalabilidad</span>
+      <p>
+        Una parte importante de la estrategia de ByMovi es usar IA para crecer sin aumentar proporcionalmente la estructura.
+      </p>
+      <p>
+        Para validar esa hipótesis hay que medir el costo real del uso de IA y su impacto sobre el presupuesto.
+      </p>
+    </section>
+
+    <section class="question">
+      <h2>Preguntas para Rodrigo</h2>
+      <ol>
+        <li>¿Qué herramientas IA estamos pagando hoy?</li>
+        <li>¿Cuánto gastamos por mes aproximadamente?</li>
+        <li>¿Está creciendo el gasto?</li>
+        <li>¿Tenemos alguna métrica o tablero?</li>
+        <li>¿En qué cliente o proyecto estamos consumiendo más?</li>
+      </ol>
+    </section>
+
+    <section class="callout red" style="margin-top:22px;">
+      <span class="tag red">Cierre ejecutivo</span>
+      <p>
+        Con estas cinco respuestas probablemente ya tengamos el 80% de la información que hoy falta para ordenar la conversación.
+      </p>
+    </section>
+
+    <p class="footer-note">
+      Documento de trabajo · Control de costos e inversión IA · ByMovi
+    </p>
+
+  </main>
+</body>
+</html>
