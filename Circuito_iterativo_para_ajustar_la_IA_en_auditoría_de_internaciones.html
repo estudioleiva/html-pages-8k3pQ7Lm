@@ -140,6 +140,21 @@ h1{
     line-height:1.45;
 }
 
+.step-note{
+    margin-top:14px;
+    padding-top:12px;
+    border-top:1px dashed #d8e3ef;
+    font-size:15px;
+    color:var(--muted);
+    line-height:1.4;
+    font-style:italic;
+    opacity:.85;
+}
+
+.highlight .step-note{
+    border-top-color:#e8c97a;
+}
+
 .loop{
     margin-top:40px;
     background:linear-gradient(135deg,var(--primary),var(--secondary));
@@ -274,11 +289,13 @@ realizada por el equipo.
 
 <div class="step highlight">
 <div class="number">4</div>
-<h2>Análisis en laboratorio Bymovi</h2>
+<h2>Detectar diferencias</h2>
 <p>
-Analizar internamente cada diferencia detectada, determinar la causa,
-evaluar posibles mejoras y definir qué ajustes deben incorporarse
-antes de habilitar una nueva prueba.
+Indicar qué omitió, qué interpretó mal o qué debería haber destacado la IA.
+</p>
+<p class="step-note">
+Nota: cada diferencia se analiza internamente (Bymovi), se determina la causa
+y se define qué ajustes incorporar antes de habilitar una nueva prueba.
 </p>
 </div>
 
