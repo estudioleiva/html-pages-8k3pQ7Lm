@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circuito de trabajo IA - Auditoría de internaciones</title>
+
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --secondary: #1f7a8c;
+      --accent: #f2a900;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #5f6c7b;
+      --line: #c9d6e3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #eef4fa 0%, #f8fbff 100%);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: 0 18px 45px rgba(15, 76, 129, 0.16);
+      border: 1px solid #dce6f1;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: #e7f1f8;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--primary);
+      font-size: 34px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: 14px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .flow {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 14px;
+      margin: 44px 0 34px;
+      align-items: stretch;
+    }
+
+    .step {
+      position: relative;
+      background: #ffffff;
+      border: 2px solid #d8e5f0;
+      border-radius: 20px;
+      padding: 22px 14px 20px;
+      min-height: 185px;
+      text-align: center;
+      box-shadow: 0 8px 22px rgba(31, 122, 140, 0.08);
+      z-index: 2;
+    }
+
+    .step::after {
+      content: "→";
+      position: absolute;
+      right: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--secondary);
+      font-size: 28px;
+      font-weight: 700;
+      z-index: 3;
+    }
+
+    .step:last-child::after {
+      content: "";
+    }
+
+    .number {
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: 0 6px 14px rgba(15, 76, 129, 0.28);
+    }
+
+    .step h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: var(--primary);
+      line-height: 1.25;
+    }
+
+    .step p {
+      margin: 0;
+      font-size: 13.5px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    .highlight {
+      border-color: var(--accent);
+      background: #fffaf0;
+    }
+
+    .highlight .number {
+      background: var(--accent);
+      color: #2f2300;
+    }
+
+    .loop-section {
+      margin-top: 34px;
+      padding: 28px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #0f4c81 0%, #1f7a8c 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loop-section::before {
+      content: "↻";
+      position: absolute;
+      right: 28px;
+      top: 8px;
+      font-size: 120px;
+      line-height: 1;
+      opacity: 0.13;
+      font-weight: 700;
+    }
+
+    .loop-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    .loop-text {
+      margin: 0;
+      max-width: 820px;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .mini-card {
+      background: #f8fbff;
+      border: 1px solid #dce6f1;
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .mini-card strong {
+      display: block;
+      color: var(--primary);
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 1000px) {
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        min-height: auto;
+        text-align: left;
+        padding-left: 76px;
+      }
+
+      .number {
+        position: absolute;
+        left: 22px;
+        top: 22px;
+        margin: 0;
+      }
+
+      .step::after {
+        content: "↓";
+        right: auto;
+        left: 38px;
+        top: auto;
+        bottom: -28px;
+        transform: none;
+      }
+
+      .step:last-child::after {
+        content: "";
+      }
+
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="eyebrow">Metodología de trabajo propuesta</div>
+      <h1>Circuito iterativo para ajustar la IA en auditoría de internaciones</h1>
+      <p class="subtitle">
+        La prioridad no es analizar muchas internaciones de manera superficial, sino trabajar sobre pocos casos reales,
+        bien identificados, hasta lograr informes consistentes y útiles para la auditoría posterior.
+      </p>
+    </div>
+
+    <div class="flow">
+      <div class="step">
+        <div class="number">1</div>
+        <h2>Elegir internaciones reales</h2>
+        <p>Pocas internaciones, concretas y bien identificadas para usarlas como banco de prueba.</p>
+      </div>
+
+      <div class="step">
+        <div class="number">2</div>
+        <h2>Revisar informe IA</h2>
+        <p>Correr o revisar el informe generado por la inteligencia artificial sobre esos mismos casos.</p>
+      </div>
+
+      <div class="step">
+        <div class="number">3</div>
+        <h2>Comparar con auditoría humana</h2>
+        <p>Contrastar el resultado de la IA contra la auditoría posterior realizada por el equipo.</p>
+      </div>
+
+      <div class="step highlight">
+        <div class="number">4</div>
+        <h2>Detectar diferencias</h2>
+        <p>Indicar qué omitió, qué interpretó mal o qué debería haber destacado la IA.</p>
+      </div>
+
+      <div class="step">
+        <div class="number">5</div>
+        <h2>Ajustar reglas</h2>
+        <p>Corregir instrucciones, criterios, reglas de convenio o pautas de interpretación.</p>
+      </div>
+
+      <div class="step">
+        <div class="number">6</div>
+        <h2>Volver a correr</h2>
+        <p>Aplicar los ajustes y volver a procesar las mismas internaciones.</p>
+      </div>
+
+      <div class="step highlight">
+        <div class="number">7</div>
+        <h2>Repetir hasta validar</h2>
+        <p>Iterar hasta que el informe resulte satisfactorio para la auditoría posterior.</p>
+      </div>
+    </div>
+
+    <div class="loop-section">
+      <p class="loop-title">La clave: iterar sobre los mismos casos</p>
+      <p class="loop-text">
+        Cada nueva corrida debe permitir verificar si la IA corrigió lo observado en la corrida anterior.
+        Solo después de lograr buenos resultados sobre este conjunto reducido conviene ampliar el análisis
+        a más internaciones o avanzar hacia una carga más masiva.
+      </p>
+    </div>
+
+    <div class="bottom-grid">
+      <div class="mini-card">
+        <strong>Entrada</strong>
+        <span>Internaciones reales, identificadas, con auditoría humana de referencia.</span>
+      </div>
+
+      <div class="mini-card">
+        <strong>Proceso</strong>
+        <span>Comparación entre informe IA, criterio auditor y reglas de negocio del IPSST.</span>
+      </div>
+
+      <div class="mini-card">
+        <strong>Resultado esperado</strong>
+        <span>Informes cada vez más precisos, consistentes y útiles para priorizar la revisión humana.</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
