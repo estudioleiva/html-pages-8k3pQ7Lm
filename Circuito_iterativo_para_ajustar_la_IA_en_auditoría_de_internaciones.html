@@ -140,19 +140,34 @@ h1{
     line-height:1.45;
 }
 
-.step-note{
-    margin-top:auto;
-    padding-top:10px;
-    margin-top:12px;
-    border-top:1px dashed #c5d4e5;
-    font-size:13px;
+.step4-note{
+    margin-top:14px;
+    padding:12px 18px;
+    background:#fffaf0;
+    border:1px dashed #e8c97a;
+    border-left:4px solid var(--accent);
+    border-radius:12px;
+    font-size:14px;
     color:var(--muted);
-    line-height:1.4;
+    line-height:1.5;
     font-style:italic;
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.highlight .step-note{
-    border-top-color:#e8c97a;
+.step4-badge{
+    flex-shrink:0;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#2c2300;
+    font-size:14px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .loop{
@@ -293,10 +308,6 @@ realizada por el equipo.
 <p>
 Indicar qué omitió, qué interpretó mal o qué debería haber destacado la IA.
 </p>
-<p class="step-note">
-Nota: cada diferencia se analiza internamente (Bymovi), se determina la causa
-y se define qué ajustes incorporar antes de habilitar una nueva prueba.
-</p>
 </div>
 
 <div class="step">
@@ -326,6 +337,12 @@ entre la auditoría humana y la IA.
 </p>
 </div>
 
+</div>
+
+<div class="step4-note">
+<span class="step4-badge">4</span>
+Cada diferencia detectada se analiza internamente (Bymovi), se determina la causa
+y se define qué ajustes incorporar antes de habilitar una nueva prueba.
 </div>
 
 <div class="loop">
