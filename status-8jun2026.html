@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estado de Proyectos — 8 Jun 2026</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #222536;
+    --border: #2e3248;
+    --text: #e8eaf0;
+    --muted: #8b90a8;
+    --red: #ff4d4d;
+    --red-bg: #2a1010;
+    --red-border: #6b1a1a;
+    --orange: #ff9500;
+    --orange-bg: #2a1d00;
+    --orange-border: #6b4200;
+    --blue: #4d9fff;
+    --blue-bg: #0a1a2e;
+    --blue-border: #1a3a5c;
+    --yellow: #ffd60a;
+    --yellow-bg: #2a2200;
+    --yellow-border: #6b5700;
+    --green: #34c759;
+    --green-bg: #0a1f0d;
+    --green-border: #1a5c24;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    padding: 2.5rem 1.5rem 4rem;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 2.8rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .date-badge {
+    background: linear-gradient(135deg, #4d9fff, #7b5fff);
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  .section {
+    margin-bottom: 2.2rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .section-num {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 1.6rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .card {
+    border-radius: 12px;
+    padding: 1rem 1.3rem;
+    border-left: 4px solid transparent;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.3rem 1rem;
+    align-items: start;
+  }
+
+  .card-main {
+    grid-column: 1 / -1;
+  }
+
+  .client {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  .feature {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+
+  .desc {
+    font-size: 0.93rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .status-pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    justify-self: end;
+    margin-top: 0.15rem;
+  }
+
+  /* URGENTE */
+  .section-urgent .section-title { color: var(--red); }
+  .section-urgent .section-num { color: var(--red); }
+  .section-urgent .card { border-left-color: var(--red); background: var(--red-bg); border-color: var(--red-border); }
+  .section-urgent .client { color: var(--red); }
+  .section-urgent .status-pill { background: var(--red); color: #fff; }
+
+  /* ACTIVO */
+  .section-active .section-title { color: var(--green); }
+  .section-active .section-num { color: var(--green); }
+  .section-active .card { border-left-color: var(--green); background: var(--green-bg); border-color: var(--green-border); }
+  .section-active .client { color: var(--green); }
+  .section-active .status-pill { background: var(--green); color: #000; }
+
+  /* ESPERANDO */
+  .section-waiting .section-title { color: var(--blue); }
+  .section-waiting .section-num { color: var(--blue); }
+  .section-waiting .card { border-left-color: var(--blue); background: var(--blue-bg); border-color: var(--blue-border); }
+  .section-waiting .client { color: var(--blue); }
+  .section-waiting .status-pill { background: var(--blue); color: #000; }
+
+  /* ALERTAS */
+  .section-alerts .section-title { color: var(--yellow); }
+  .section-alerts .section-num { color: var(--yellow); }
+  .section-alerts .card { border-left-color: var(--yellow); background: var(--yellow-bg); border-color: var(--yellow-border); }
+  .section-alerts .client { color: var(--yellow); }
+  .section-alerts .status-pill { background: var(--yellow); color: #000; }
+
+  .dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 15px; padding: 1.2rem 0.8rem 3rem; }
+    header h1 { font-size: 1.3rem; }
+    .card { padding: 0.85rem 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <span class="date-badge">8 Jun 2026</span>
+    <h1>Estado de Proyectos</h1>
+  </header>
+
+  <!-- 1. URGENTE -->
+  <div class="section section-urgent">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Urgente / Vence Pronto</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--red)"></span>BOREAL</div>
+          <div class="feature">Token QR V2 — Despliegue y subida a producción</div>
+          <div class="desc">Pautado para ejecutarse el día de hoy (08/06).</div>
+        </div>
+        <span class="status-pill">HOY</span>
+      </div>
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--red)"></span>OSPIV</div>
+          <div class="feature">Tablero Power BI</div>
+          <div class="desc">Urgente respuesta de Marcos a F. Ugarte en el grupo. Pendiente de validación para avanzar.</div>
+        </div>
+        <span class="status-pill">PENDIENTE</span>
+      </div>
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--red)"></span>AVERA SALUD</div>
+          <div class="feature">Módulo Convenios y Liquidaciones — Capacitación operativa</div>
+          <div class="desc">Vencido. Facundo debe agendar la reunión esta semana (8 al 12 de junio).</div>
+        </div>
+        <span class="status-pill">VENCIDO</span>
+      </div>
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--red)"></span>BOREAL</div>
+          <div class="feature">Push Masivos — Entrega de app móvil con nueva funcionalidad</div>
+          <div class="desc">Demorado, con promesa técnica de salir entre hoy y mañana.</div>
+        </div>
+        <span class="status-pill">DEMORADO</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 2. ACTIVO -->
+  <div class="section section-active">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Activo Esta Semana</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--green)"></span>OSPAAT</div>
+          <div class="feature">Emisión en Boca de Expendio — Primeras emisiones reales</div>
+          <div class="desc">Activo. El cliente ya empezó a emitir y Facundo está monitoreando.</div>
+        </div>
+        <span class="status-pill">EN CURSO</span>
+      </div>
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--green)"></span>BAYRES — MEDEPLAN</div>
+          <div class="feature">Mejoras Tablero PBIX — Incorporación de fechas y ajustes</div>
+          <div class="desc">Tras capacitación del 03/06. En curso, Mariana dando seguimiento activo con el proveedor.</div>
+        </div>
+        <span class="status-pill">EN CURSO</span>
+      </div>
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--green)"></span>ASUNT</div>
+          <div class="feature">Visualización Efector Colegio Médico</div>
+          <div class="desc">Identificación del profesional en órdenes para auditoría. Incluido en rework de atenciones para resolver reclamos operativos.</div>
+        </div>
+        <span class="status-pill">EN CURSO</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. ESPERANDO -->
+  <div class="section section-waiting">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Esperando Respuesta de Terceros</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--blue)"></span>OSCONARA</div>
+          <div class="feature">App iOS y Dominio Navelis — Registro de dominio web</div>
+          <div class="desc">Bloqueado totalmente esperando que el cliente (F. Trotta) responda y lo registre.</div>
+        </div>
+        <span class="status-pill">BLOQUEADO</span>
+      </div>
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--blue)"></span>OSMISS</div>
+          <div class="feature">Publicación App iOS — Acuerdo Apple Developer</div>
+          <div class="desc">Bloqueado esperando que el cliente ingrese y firme digitalmente el acuerdo.</div>
+        </div>
+        <span class="status-pill">BLOQUEADO</span>
+      </div>
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--blue)"></span>PREVENCIÓN SALUD</div>
+          <div class="feature">POC IA Auditoría Diabetes — Feedback de prueba de concepto</div>
+          <div class="desc">Bloqueado esperando nueva devolución del cliente para seguir iterando el modelo.</div>
+        </div>
+        <span class="status-pill">BLOQUEADO</span>
+      </div>
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--blue)"></span>IPSST</div>
+          <div class="feature">Piloto IA Liquidaciones — Casos de prueba</div>
+          <div class="desc">Bloqueado esperando que la Dra. Clara Allier provea la información de entrenamiento.</div>
+        </div>
+        <span class="status-pill">BLOQUEADO</span>
+      </div>
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--blue)"></span>BOREAL</div>
+          <div class="feature">Internados Paraná — Excel de convenios actualizado</div>
+          <div class="desc">Bloqueado esperando el envío de datos por parte de Guardia (Boreal).</div>
+        </div>
+        <span class="status-pill">BLOQUEADO</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4. ALERTAS -->
+  <div class="section section-alerts">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Alertas</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--yellow)"></span>UOM MDM</div>
+          <div class="feature">Lanzamiento App y Padrón — Determinación de planes</div>
+          <div class="desc">Riesgo de estancamiento. Sin respuesta del cliente al pedido técnico para subir afiliados.</div>
+        </div>
+        <span class="status-pill">RIESGO</span>
+      </div>
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--yellow)"></span>BOREAL</div>
+          <div class="feature">Módulo Alto Costo IA — Próximos pasos</div>
+          <div class="desc">Riesgo de parálisis de proyecto. Pendiente lograr reunión de avance con Mariano Koltan.</div>
+        </div>
+        <span class="status-pill">RIESGO</span>
+      </div>
+
+      <div class="card">
+        <div class="card-main">
+          <div class="client"><span class="dot" style="background:var(--yellow)"></span>OSPIV</div>
+          <div class="feature">Integración Liquidaciones SAAS</div>
+          <div class="desc">Fuerte disconformidad del cliente por carga manual. Riesgo de rechazo del módulo. Rodrigo debe coordinar urgente opciones de extracción con SAAS.</div>
+        </div>
+        <span class="status-pill">CRÍTICO</span>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>Estado de proyectos generado el 8 de junio de 2026</footer>
+
+</div>
+</body>
+</html>
